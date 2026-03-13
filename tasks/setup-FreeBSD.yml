@@ -16,11 +16,3 @@
     value: "YES"
     dest:  /etc/rc.conf.d/ddclient
   tags: ddclient
-
-- name: set ddclient flags
-  sysrc:
-    name:  ddclient_flags
-    state: present
-    value: " --syslog --usev4=ifv4 --ifv4=igc0 --daemon=0 --verbose --facility=local3 --pid=/var/run/ddclient.pid"
-    dest:  /etc/rc.conf.d/ddclient
-  tags: ddclient
