@@ -1,0 +1,5 @@
+# Only .conf files /usr/local/etc/newsyslog.conf.d/ are pulled in by newsyslog
+#
+
+# logfilename                       [owner:group]   mode count size when   flags [/pid_file] [sig_num]
+/var/log/ddclient.log               root:logcheck   640  {{ ddclient_newsyslog_count }}    *    $D0    B
