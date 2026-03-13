@@ -8,3 +8,19 @@
     ddclient_group: "wheel" 
     __ddclient_configuration_directory: /usr/local/etc/ddclient
     __ddclient_configuration_directory_mode: 0755
+
+- name: enable ddclient
+  sysrc:
+    name:  ddclient_enable
+    state: present
+    value: "YES"
+    dest:  /etc/rc.conf.d/ddclient
+  tags: ddclient
+
+- name: set ddclient flags
+  sysrc:
+    name:  ddclient_flags
+    state: present
+    value: " --syslog --usev4=ifv4 --ifv4=igc0 --daemon=0 --verbose --facility=local3 --pid=/var/run/ddclient.pid"
+    dest:  /etc/rc.conf.d/ddclient
+  tags: ddclient
