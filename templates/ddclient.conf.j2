@@ -4,13 +4,19 @@
 daemon={{ ddclient_daemon }}
 ssl={{ ddclient_ssl }}
 syslog=yes
+verbose
+facility=local3
+pid=/var/run/ddclient.pid
 {% if ddclient_specify_cache %}
 cache={{ __ddclient_cache_directory }}/ddclient.cache
 {% endif %}
 
 {% for config in ddclient_configs %}
-{% if config.use is defined and config.use %}
-use={{ config.use }}
+{% if config.usev4 is defined and config.usev4 %}
+usev4={{ config.usev4 }}
+{% endif %}
+{% if config.ifv4 is defined and config.ifv4 %}
+ifv4={{ config.ifv4 }}
 {% endif %}
 protocol={{ config.protocol }}
 {% if config.server is defined and config.server %}

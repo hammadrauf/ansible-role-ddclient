@@ -16,3 +16,7 @@
     value: "YES"
     dest:  /etc/rc.conf.d/ddclient
   tags: ddclient
+
+- name: install newsyslog.conf file
+  template: src={{ ddclient_newsyslog_template }}.j2 dest={{ newsyslog_config_dir }}/{{ ddclient_newsyslog_file }}.conf owner=root group=wheel mode=0644 backup=yes
+  tags: ddclient,newsyslog

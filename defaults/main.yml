@@ -27,3 +27,9 @@ ddclient_owner: root
 ddclient_group: root
 ddclient_specify_cache: false
 __ddclient_configuration_directory_mode: 0750
+
+
+newsyslog_config_dir:        /usr/local/etc/newsyslog.conf.d
+ddclient_newsyslog_template: ddclient_newsyslog
+ddclient_newsyslog_file:     ddclient
+ddclient_newsyslog_count:    50
