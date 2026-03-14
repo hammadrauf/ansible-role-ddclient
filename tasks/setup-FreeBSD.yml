@@ -2,3 +2,21 @@
   community.general.pkgng:
     name: ddclient
     state: present
+
+- ansible.builtin.set_fact:
+    ddclient_owner: "root" 
+    ddclient_group: "wheel" 
+    __ddclient_configuration_directory: /usr/local/etc/ddclient
+    __ddclient_configuration_directory_mode: 0755
+
+- name: enable ddclient
+  sysrc:
+    name:  ddclient_enable
+    state: present
+    value: "YES"
+    dest:  /etc/rc.conf.d/ddclient
+  tags: ddclient
+
+- name: install newsyslog.conf file
+  template: src={{ ddclient_newsyslog_template }}.j2 dest={{ newsyslog_config_dir }}/{{ ddclient_newsyslog_file }}.conf owner=root group=wheel mode=0644 backup=yes
+  tags: ddclient,newsyslog
